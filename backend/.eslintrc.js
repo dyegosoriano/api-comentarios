@@ -5,10 +5,10 @@ module.exports = {
     jest: true,
   },
   extends: [
+    'standard',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
-    'standard',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
