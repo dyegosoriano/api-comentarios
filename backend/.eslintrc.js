@@ -4,14 +4,20 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: ['standard'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
+    'standard',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
+    'prettier/prettier': 'error',
     'class-methods-use-this': 'off',
     'no-console': 'off',
     'import/extensions': [
