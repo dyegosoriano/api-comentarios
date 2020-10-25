@@ -22,10 +22,16 @@ class PostController {
   }
 
   async index(request: Request, response: Response) {
+    const page = Number(request.query.page) || 1
+
     const postRepo = getRepository(Post)
 
     try {
-      const allPosts = await postRepo.find({ order: { id: 'ASC' } })
+      const allPosts = await postRepo.find({
+        order: { id: 'ASC' },
+        skip: (page - 1) * 10,
+        take: 10
+      })
 
       return response.json(allPosts)
     } catch (error) {
