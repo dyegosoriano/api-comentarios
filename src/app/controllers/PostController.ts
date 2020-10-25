@@ -25,7 +25,7 @@ class PostController {
     const postRepo = getRepository(Post)
 
     try {
-      const allPosts = await postRepo.find()
+      const allPosts = await postRepo.find({ order: { id: 'ASC' } })
 
       return response.json(allPosts)
     } catch (error) {

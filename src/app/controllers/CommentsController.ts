@@ -29,7 +29,10 @@ class CommentController {
     const commentRepo = getRepository(Comment)
 
     try {
-      const commentsForPost = await commentRepo.find({ where: { postId } })
+      const commentsForPost = await commentRepo.find({
+        where: { postId },
+        order: { id: 'ASC' }
+      })
 
       if (commentsForPost.length === 0) {
         return response.status(404).json({ error: '404 Not Found' })

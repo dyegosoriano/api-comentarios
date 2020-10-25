@@ -12,7 +12,7 @@ export default class Comment {
   @PrimaryGeneratedColumn('increment')
   id: number
 
-  @Column({ nullable: false, length: 140 })
+  @Column({ nullable: false, length: 280 })
   comment: string
 
   @ManyToOne(() => Post, post => post.id)

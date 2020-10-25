@@ -10,7 +10,7 @@ export default class Post {
   @PrimaryGeneratedColumn('increment')
   id: number
 
-  @Column({ nullable: false, length: 140 })
+  @Column({ nullable: false, length: 280 })
   message: string
 
   @CreateDateColumn({ name: 'created_at' })
