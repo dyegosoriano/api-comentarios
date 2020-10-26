@@ -6,9 +6,9 @@ import Post from '../models/Post'
 class PostController {
   async store(request: Request, response: Response) {
     const { message } = request.body
-    const postRepo = getRepository(Post)
 
     try {
+      const postRepo = getRepository(Post)
       const postCreated = await postRepo.save({ message })
 
       return response.json(postCreated)
@@ -24,9 +24,8 @@ class PostController {
   async index(request: Request, response: Response) {
     const page = Number(request.query.page) || 1
 
-    const postRepo = getRepository(Post)
-
     try {
+      const postRepo = getRepository(Post)
       const allPosts = await postRepo.find({
         order: { id: 'ASC' },
         skip: (page - 1) * 10,
@@ -45,9 +44,9 @@ class PostController {
 
   async show(request: Request, response: Response) {
     const { id } = request.params
-    const postRepo = getRepository(Post)
 
     try {
+      const postRepo = getRepository(Post)
       const post = await postRepo.findOne({ where: { id } })
 
       if (!post) {

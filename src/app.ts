@@ -6,6 +6,8 @@ import routes from './routes'
 import './database'
 
 class App {
+  server: express.Application
+
   constructor() {
     this.server = express()
 

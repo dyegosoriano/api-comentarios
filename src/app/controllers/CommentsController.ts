@@ -5,13 +5,12 @@ import Comment from '../models/Comment'
 
 class CommentController {
   async store(request: Request, response: Response) {
-    const postId = request.params.id
+    const { id }: any = request.params.id
     const { comment } = request.body
 
-    const commentRepo = getRepository(Comment)
-
     try {
-      const commentCreated = await commentRepo.save({ postId, comment })
+      const commentRepo = getRepository(Comment)
+      const commentCreated = await commentRepo.save({ postId: id, comment })
 
       return response.json(commentCreated)
     } catch (error) {
@@ -26,9 +25,8 @@ class CommentController {
   async show(request: Request, response: Response) {
     const postId = request.params.id
 
-    const commentRepo = getRepository(Comment)
-
     try {
+      const commentRepo = getRepository(Comment)
       const commentsForPost = await commentRepo.find({
         where: { postId },
         order: { id: 'ASC' }
