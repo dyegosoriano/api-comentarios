@@ -1,5 +1,5 @@
 # Configurations API
-PORT
+PORT=
 
 # DataBase
 DB_HOST=
